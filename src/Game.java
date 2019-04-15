@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    private ArrayList<Police> polices;
+    private ArrayList<Police> polices = new ArrayList<>();
     private char[][] map;
     private int mapWidth;
     private int mapHeight;
@@ -23,7 +23,8 @@ public class Game {
             addPolice();
         }
         addThief();
-
+        printMap();
+        System.out.print("if you are ready press ant key...");
     }
 
     public void makeMap(){
@@ -49,7 +50,7 @@ public class Game {
         while(true){
             Thief thief = new Thief((int)(Math.random()*mapWidth), (int)(Math.random()*mapHeight));
             if (map[thief.getyCoordinate()][thief.getxCoordinate()] == '-'){
-                map[thief.getyCoordinate()][thief.getxCoordinate()] = 'P';
+                map[thief.getyCoordinate()][thief.getxCoordinate()] = 'D';
                 this.thief = thief;
                 break;
             }
@@ -63,7 +64,8 @@ public class Game {
         System.out.println();
         for (int i = 0; i < mapHeight; i++){
             for (int j = 0; j < mapWidth; j++){
-                System.out.print('|' + map[i][j]);
+                System.out.print('|');
+                System.out.print(map[i][j]);
             }
             System.out.println('|');
         }
