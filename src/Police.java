@@ -1,13 +1,11 @@
 public class Police {
     private int xCoordinate;
     private int yCoordinate;
-    private Map map;
     private boolean seen;
 
-    public void Police(int x, int y, Map map){
+    public Police(int x, int y){
         xCoordinate = x;
         yCoordinate = y;
-        this.map = map;
         seen = false;
     }
 
@@ -25,14 +23,6 @@ public class Police {
 
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
-    }
-
-    public Map getMap() {
-        return map;
-    }
-
-    public void setMap(Map map) {
-        this.map = map;
     }
 
     public boolean isSeen() {

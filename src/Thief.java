@@ -1,12 +1,10 @@
 public class Thief {
     private int xCoordinate;
     private int yCoordinate;
-    private Map map;
 
-    public void Thief(int x, int y, Map map){
+    public Thief(int x, int y){
         xCoordinate = x;
         yCoordinate = y;
-        this.map = map;
     }
 
     public int getxCoordinate() {
@@ -25,12 +23,5 @@ public class Thief {
         this.yCoordinate = yCoordinate;
     }
 
-    public Map getMap() {
-        return map;
-    }
-
-    public void setMap(Map map) {
-        this.map = map;
-    }
 
 }
