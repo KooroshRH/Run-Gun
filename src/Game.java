@@ -24,7 +24,10 @@ public class Game {
         }
         addThief();
         printMap();
-        System.out.print("if you are ready press ant key...");
+        System.out.print("if you are ready press any key...");
+        input.nextLine();
+        input.nextLine();
+
     }
 
     public void makeMap(){
@@ -37,7 +40,7 @@ public class Game {
 
     public void addPolice(){
         while(true){
-            Police police = new Police((int)(Math.random()*mapWidth), (int)(Math.random()*mapHeight));
+            Police police = new Police((int)(Math.random()*mapWidth), (int)(Math.random()*mapHeight), map);
             if (map[police.getyCoordinate()][police.getxCoordinate()] == '-'){
                 map[police.getyCoordinate()][police.getxCoordinate()] = 'P';
                 polices.add(police);
@@ -48,7 +51,7 @@ public class Game {
 
     public void addThief(){
         while(true){
-            Thief thief = new Thief((int)(Math.random()*mapWidth), (int)(Math.random()*mapHeight));
+            Thief thief = new Thief((int)(Math.random()*mapWidth), (int)(Math.random()*mapHeight), map);
             if (map[thief.getyCoordinate()][thief.getxCoordinate()] == '-'){
                 map[thief.getyCoordinate()][thief.getxCoordinate()] = 'D';
                 this.thief = thief;

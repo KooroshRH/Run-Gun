@@ -1,10 +1,12 @@
 public class Thief {
     private int xCoordinate;
     private int yCoordinate;
+    private char[][] map;
 
-    public Thief(int x, int y){
+    public Thief(int x, int y, char[][] map){
         xCoordinate = x;
         yCoordinate = y;
+        this.map = map;
     }
 
     public int getxCoordinate() {
@@ -23,5 +25,11 @@ public class Thief {
         this.yCoordinate = yCoordinate;
     }
 
+    public void commonMove(){
 
+    }
+
+    public void intelligentMove(){
+
+    }
 }

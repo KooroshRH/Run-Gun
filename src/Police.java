@@ -2,11 +2,13 @@ public class Police {
     private int xCoordinate;
     private int yCoordinate;
     private boolean seen;
+    private char[][] map;
 
-    public Police(int x, int y){
+    public Police(int x, int y, char[][] map){
         xCoordinate = x;
         yCoordinate = y;
         seen = false;
+        this.map = map;
     }
 
     public int getxCoordinate() {
