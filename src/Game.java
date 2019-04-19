@@ -27,9 +27,11 @@ public class Game {
         System.out.print("if you are ready press any key...");
         input.nextLine();
         input.nextLine();
+        boolean isThiefSeen = false;
         while (true) {
             boolean capture = false;
             cleanMap();
+            isThiefSeen =
             for (Police police : polices) {
                 if (police.commonMove(mapHeight, mapWidth)) {
                     capture = true;
@@ -112,5 +114,14 @@ public class Game {
             System.out.print('=');
         }
         System.out.println();
+    }
+
+    public boolean checkSeen(){
+        for (Police police : polices){
+            if (Math.abs(police.getxCoordinate() - thief.getxCoordinate()) <= 2 && Math.abs(police.getyCoordinate() - thief.getyCoordinate()) <= 2){
+                return true;
+            }
+        }
+        return false;
     }
 }
