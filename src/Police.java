@@ -1,13 +1,11 @@
 public class Police {
     private int xCoordinate;
     private int yCoordinate;
-    private boolean seen;
     private char[][] map;
 
     public Police(int x, int y, char[][] map){
         xCoordinate = x;
         yCoordinate = y;
-        seen = false;
         this.map = map;
     }
 
@@ -15,24 +13,8 @@ public class Police {
         return xCoordinate;
     }
 
-    public void setxCoordinate(int xCoordinate) {
-        this.xCoordinate = xCoordinate;
-    }
-
     public int getyCoordinate() {
         return yCoordinate;
-    }
-
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
-    }
-
-    public boolean isSeen() {
-        return seen;
-    }
-
-    public void setSeen(boolean seen) {
-        this.seen = seen;
     }
 
     public boolean commonMove(int mapHeight, int mapWidth){
@@ -68,8 +50,33 @@ public class Police {
         return false;
     }
 
-    public void intelligentMove(){
-
+    public boolean intelligentMove(int mapHeight, int mapWidth, Thief thief){
+        while (true){
+            int tmpXcoordinate = xCoordinate;
+            int tmpYcoordinate = yCoordinate;
+            if (tmpXcoordinate <= thief.getxCoordinate()){
+                tmpXcoordinate += 1;
+            } else {
+                tmpXcoordinate -= 1;
+            }
+            if (tmpYcoordinate <= thief.getyCoordinate()){
+                tmpYcoordinate += 1;
+            } else {
+                tmpYcoordinate -= 1;
+            }
+            if (map[tmpYcoordinate][tmpXcoordinate] == 'D'){
+                map[yCoordinate][xCoordinate] = '-';
+                map[tmpYcoordinate][tmpXcoordinate] = '*';
+                return true;
+            } else if (map[tmpYcoordinate][tmpXcoordinate] == '-' || map[tmpYcoordinate][tmpXcoordinate] == 'f' || map[tmpYcoordinate][tmpXcoordinate] == 'P'){
+                map[yCoordinate][xCoordinate] = 'f';
+                yCoordinate = tmpYcoordinate;
+                xCoordinate = tmpXcoordinate;
+                map[yCoordinate][xCoordinate] = 'P';
+                break;
+            }
+        }
+        return false;
     }
 
     @Override

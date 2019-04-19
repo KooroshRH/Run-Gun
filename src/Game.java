@@ -31,11 +31,20 @@ public class Game {
         while (true) {
             boolean capture = false;
             cleanMap();
-            isThiefSeen =
-            for (Police police : polices) {
-                if (police.commonMove(mapHeight, mapWidth)) {
-                    capture = true;
+            isThiefSeen = checkSeen();
+            if (!checkSeen()) {
+                for (Police police : polices) {
+                    if (police.commonMove(mapHeight, mapWidth)) {
+                        capture = true;
+                    }
                 }
+            } else {
+                for (Police police : polices) {
+                    if (police.intelligentMove(mapHeight, mapWidth, thief)) {
+                        capture = true;
+                    }
+                }
+                System.out.println("OMG thief saw by a police!!!");
             }
             if (capture){
                 printMap();
