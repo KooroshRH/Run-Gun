@@ -57,8 +57,8 @@ public class Police {
                 map[yCoordinate][xCoordinate] = '-';
                 map[tmpYcoordinate][tmpXcoordinate] = '*';
                 return true;
-            } else if (map[tmpYcoordinate][tmpXcoordinate] == '-'){
-                map[yCoordinate][xCoordinate] = '-';
+            } else if (map[tmpYcoordinate][tmpXcoordinate] == '-' || map[tmpYcoordinate][tmpXcoordinate] == 'f'){
+                map[yCoordinate][xCoordinate] = 'f';
                 yCoordinate = tmpYcoordinate;
                 xCoordinate = tmpXcoordinate;
                 map[yCoordinate][xCoordinate] = 'P';

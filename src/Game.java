@@ -24,18 +24,24 @@ public class Game {
         }
         addThief();
         printMap();
-        for (Police police : polices){
-            System.out.println(police);
-        }
         System.out.print("if you are ready press any key...");
         input.nextLine();
         input.nextLine();
         while (true) {
             boolean capture = false;
+            cleanMap();
             for (Police police : polices) {
                 if (police.commonMove(mapHeight, mapWidth)) {
                     capture = true;
                 }
+            }
+            if (capture){
+                printMap();
+                System.out.println("Thief captured in '*' area by police!!!");
+                return;
+            }
+            if (thief.commonMove(mapHeight, mapWidth)){
+                capture = true;
             }
             try {
                 Thread.sleep(2000);
@@ -43,10 +49,8 @@ public class Game {
                 e.printStackTrace();
             }
             printMap();
-            for (Police police : polices){
-                System.out.println(police);
-            }
             if (capture){
+                System.out.println("Thief captured in '*' area by police!!!");
                 return;
             }
         }
@@ -56,6 +60,16 @@ public class Game {
         for (int i = 0; i < mapHeight; i++){
             for (int j = 0; j < mapWidth; j++){
                 map[i][j] = '-';
+            }
+        }
+    }
+
+    public void cleanMap(){
+        for (int i = 0; i < mapHeight; i++){
+            for (int j = 0; j < mapWidth; j++){
+                if (map[i][j] == 'f'){
+                    map[i][j] = '-';
+                }
             }
         }
     }
