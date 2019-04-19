@@ -24,10 +24,32 @@ public class Game {
         }
         addThief();
         printMap();
+        for (Police police : polices){
+            System.out.println(police);
+        }
         System.out.print("if you are ready press any key...");
         input.nextLine();
         input.nextLine();
-
+        while (true) {
+            boolean capture = false;
+            for (Police police : polices) {
+                if (police.commonMove(mapHeight, mapWidth)) {
+                    capture = true;
+                }
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            printMap();
+            for (Police police : polices){
+                System.out.println(police);
+            }
+            if (capture){
+                return;
+            }
+        }
     }
 
     public void makeMap(){
